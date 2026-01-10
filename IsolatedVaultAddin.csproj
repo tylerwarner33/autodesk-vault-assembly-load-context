@@ -1,0 +1,120 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- VaultVersion -->
+	<Choose>
+		<When Condition="$(Configuration.Contains('2023'))">
+			<PropertyGroup>
+				<VaultVersion>2023</VaultVersion>
+				<TargetFramework>net48</TargetFramework>
+				<LicensingFileName>AdskLicensingSDK_6.dll</LicensingFileName>
+			</PropertyGroup>
+		</When>
+		<When Condition="$(Configuration.Contains('2024'))">
+			<PropertyGroup>
+				<VaultVersion>2024</VaultVersion>
+				<TargetFramework>net48</TargetFramework>
+				<LicensingFileName>AdskLicensingSDK_7.dll</LicensingFileName>
+			</PropertyGroup>
+		</When>
+		<When Condition="$(Configuration.Contains('2025'))">
+			<PropertyGroup>
+				<VaultVersion>2025</VaultVersion>
+				<TargetFramework>net48</TargetFramework>
+				<LicensingFileName>AdskLicensingSDK_8.dll</LicensingFileName>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<VaultVersion>2026</VaultVersion>
+				<TargetFramework>net8.0-windows</TargetFramework>
+				<LicensingFileName>AdskLicensingSDK_9.dll</LicensingFileName>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+	
+	<PropertyGroup>
+		<LangVersion>latestMajor</LangVersion>
+		<!-- Need a "StartAction" & "StartProgram" to debug a "Library" "OutputType" -->
+		<OutputType>Library</OutputType>
+		<StartAction>Program</StartAction>
+		<StartProgram>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Explorer\Connectivity.VaultPro.exe</StartProgram>
+		<!--<StartProgram>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Explorer\Connectivity.JobProcessor.Delegate.Host.exe</StartProgram>-->
+		<AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+		<SignAssembly>true</SignAssembly>
+
+		<AssemblyTitle>IsolatedVaultAddin</AssemblyTitle>
+		<Description>IsolatedVaultAddin</Description>
+		<Product>IsolatedVaultAddin</Product>
+		<Version>1.0.0</Version>
+		<FileVersion>1.0.0</FileVersion>
+
+		<!-- SDK-Style Project Properties -->
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<GenerateDependencyFile>true</GenerateDependencyFile>
+		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<UseWPF>true</UseWPF>
+
+		<!-- Nuget Package Library Files Not Copying To Output Path Without This -->
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<!-- Assembly References -->
+	<ItemGroup>
+		<Reference Include="Autodesk.Connectivity.Explorer.Extensibility">
+			<HintPath>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Autodesk.Connectivity.Explorer.Extensibility.dll</HintPath>
+			<!-- Required For Isolated Addin -->
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Autodesk.Connectivity.Extensibility.Framework">
+			<HintPath>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Autodesk.Connectivity.Extensibility.Framework.dll</HintPath>
+			<!-- Required For Isolated Addin -->
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Autodesk.Connectivity.JobProcessor.Extensibility">
+			<HintPath>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Autodesk.Connectivity.JobProcessor.Extensibility.dll</HintPath>
+			<!-- Required For Isolated Addin -->
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Autodesk.Connectivity.WebServices">
+			<HintPath>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Autodesk.Connectivity.WebServices.dll</HintPath>
+			<!-- Required For Isolated Addin -->
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+	<!-- File References -->
+	<ItemGroup>
+		<Content Include="$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\$(LicensingFileName)">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<None Update="IsolatedVaultAddin.vcet.config">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<!-- This "PropertyGroup" section specifies where the plugin is being installed. -->
+	<PropertyGroup>
+		<AddinOutputPath>$(ProgramData)\Autodesk\Vault $(VaultVersion)\Extensions\$(MSBuildProjectName)</AddinOutputPath>
+		<BaseOutputPath>bin\</BaseOutputPath>
+	</PropertyGroup>
+
+	<!-- This "Target" section acts as the post-clean events. The newer "SDK-style" version of a .target file. -->
+	<Target Name="CleanAddinOutputPath" AfterTargets="Clean">
+		<RemoveDir Directories="$(AddinOutputPath)" />
+		<RemoveDir Directories="bin" />
+	</Target>
+
+	<!-- This "Target" section acts as the post-build events. The newer "SDK-style" version of a .target file. -->
+	<Target Name="BuildAddinOutputPath" AfterTargets="Build">
+		<ItemGroup>
+			<AppBundle Include="$(TargetDir)\*.dll" />
+		</ItemGroup>
+		<Copy SourceFiles="@(AppBundle)" DestinationFolder="$(AddinOutputPath)" />
+		<Copy SourceFiles="$(ProjectDir)$(MSBuildProjectName).vcet.config" DestinationFolder="$(AddinOutputPath)" />
+	</Target>
+
+</Project>
