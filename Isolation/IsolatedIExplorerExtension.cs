@@ -201,7 +201,7 @@ public abstract class IsolatedIExplorerExtension : IExplorerExtension
 			AddinLoadContext dependenciesProvider = AddinLoadContext.GetDependenciesProvider(currentType);
 			_isolatedInstance = dependenciesProvider.CreateAssemblyInstance(currentType);
 
-			return AddinLoadContext.Invoke<CustomEntityHandler>(_isolatedInstance, nameof(CommandSites));
+			return AddinLoadContext.Invoke<CustomEntityHandler>(_isolatedInstance, nameof(CustomEntityHandlers));
 		}
 #endif
 
@@ -232,7 +232,7 @@ public abstract class IsolatedIExplorerExtension : IExplorerExtension
 			AddinLoadContext dependenciesProvider = AddinLoadContext.GetDependenciesProvider(currentType);
 			_isolatedInstance = dependenciesProvider.CreateAssemblyInstance(currentType);
 
-			return AddinLoadContext.Invoke<DetailPaneTab>(_isolatedInstance, nameof(CommandSites));
+			return AddinLoadContext.Invoke<DetailPaneTab>(_isolatedInstance, nameof(DetailTabs));
 		}
 #endif
 
@@ -263,7 +263,7 @@ public abstract class IsolatedIExplorerExtension : IExplorerExtension
 			AddinLoadContext dependenciesProvider = AddinLoadContext.GetDependenciesProvider(currentType);
 			_isolatedInstance = dependenciesProvider.CreateAssemblyInstance(currentType);
 
-			return AddinLoadContext.Invoke<DockPanel>(_isolatedInstance, nameof(CommandSites));
+			return AddinLoadContext.Invoke<DockPanel>(_isolatedInstance, nameof(DockPanels));
 		}
 #endif
 
@@ -294,7 +294,7 @@ public abstract class IsolatedIExplorerExtension : IExplorerExtension
 			AddinLoadContext dependenciesProvider = AddinLoadContext.GetDependenciesProvider(currentType);
 			_isolatedInstance = dependenciesProvider.CreateAssemblyInstance(currentType);
 
-			return AddinLoadContext.Invoke<string>(_isolatedInstance, nameof(CommandSites));
+			return AddinLoadContext.Invoke<string>(_isolatedInstance, nameof(HiddenCommands));
 		}
 #endif
 

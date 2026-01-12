@@ -37,8 +37,8 @@
 		<!-- Need a "StartAction" & "StartProgram" to debug a "Library" "OutputType" -->
 		<OutputType>Library</OutputType>
 		<StartAction>Program</StartAction>
-		<StartProgram>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Explorer\Connectivity.VaultPro.exe</StartProgram>
-		<!--<StartProgram>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Explorer\Connectivity.JobProcessor.Delegate.Host.exe</StartProgram>-->
+		<StartProgram>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Connectivity.VaultPro.exe</StartProgram>
+		<!--<StartProgram>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Connectivity.JobProcessor.Delegate.Host.exe</StartProgram>-->
 		<AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>true</SignAssembly>
 
@@ -60,8 +60,14 @@
 
 		<!-- Nuget Package Library Files Not Copying To Output Path Without This -->
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<Configurations>Debug;Release;Debug-2023;Debug-2024;Debug-2025;Debug-2026;Release-2023;Release-2024;Release-2025;Release-2026</Configurations>
 	</PropertyGroup>
 
+	<!-- Nuget Packages -->
+	<ItemGroup>
+		<PackageReference Include="Serilog" Version="4.3.0" />
+	</ItemGroup>
+	
 	<!-- Assembly References -->
 	<ItemGroup>
 		<Reference Include="Autodesk.Connectivity.Explorer.Extensibility">
@@ -81,6 +87,16 @@
 		</Reference>
 		<Reference Include="Autodesk.Connectivity.WebServices">
 			<HintPath>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Autodesk.Connectivity.WebServices.dll</HintPath>
+			<!-- Required For Isolated Addin -->
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Autodesk.DataManagement.Client.Framework">
+			<HintPath>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Autodesk.DataManagement.Client.Framework.dll</HintPath>
+			<!-- Required For Isolated Addin -->
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Autodesk.DataManagement.Client.Framework.Vault">
+			<HintPath>$(ProgramFiles)\Autodesk\Vault Client $(VaultVersion)\Explorer\Autodesk.DataManagement.Client.Framework.Vault.dll</HintPath>
 			<!-- Required For Isolated Addin -->
 			<Private>False</Private>
 		</Reference>
