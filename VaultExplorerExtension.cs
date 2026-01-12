@@ -5,10 +5,11 @@ using IsolatedVaultAddin.Isolation;
 using System.Runtime.Loader;
 #endif
 
-[assembly: ExtensionId("5b01004f-b05b-4ef9-af7e-b9efd8bc16d1")]
-
 namespace IsolatedVaultAddin;
 
+/// <remarks>
+///	Assembly attributes (ApiVersion, ExtensionId) are generated via MSBuild in the .csproj file.
+/// </remarks>
 public class VaultExplorerExtension : IsolatedIExplorerExtension
 {
 	public override void Startup() { }

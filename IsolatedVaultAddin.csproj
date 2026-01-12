@@ -72,6 +72,10 @@
 		<AssemblyAttribute Include="Autodesk.Connectivity.Extensibility.Framework.ApiVersion">
 			<_Parameter1>$(ApiVersionNumber)</_Parameter1>
 		</AssemblyAttribute>
+		<!-- ExtensionId Assembly Attribute -->
+		<AssemblyAttribute Include="Autodesk.Connectivity.Extensibility.Framework.ExtensionId">
+			<_Parameter1>5b01004f-b05b-4ef9-af7e-b9efd8bc16d1</_Parameter1>
+		</AssemblyAttribute>
 	</ItemGroup>
 
 	<!-- Nuget Packages -->
