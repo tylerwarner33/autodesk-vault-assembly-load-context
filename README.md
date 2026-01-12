@@ -6,9 +6,8 @@
 
 A minimal Autodesk Vault add-in sample that demonstrates safe dependency isolation. Vault ships with specific assembly versions. Referencing newer (or different) versions in an add-in often causes binding conflicts. This sample allows the use of NuGet package/assembly versions that differ from the ones bundled with Vault by isolating the add-in’s dependencies in a custom load context.
 
-<img width="1710" height="266" alt="Screenshot 2026-01-12 054347" src="https://github.com/user-attachments/assets/7842352c-1713-47bc-b42f-b79e0e6c5219" />
-
-<img width="389" height="509" alt="Screenshot 2026-01-12 054651" src="https://github.com/user-attachments/assets/13800a27-2a99-47f5-8443-856b14248be6" />
+![SerilogVersion](Images/Ribbon_SerilogVersion.png)
+![Vault2026.1](Images/Dialog_Vault2026.1.png)
 
 ## Setup
 

@@ -55,7 +55,7 @@ public class VaultExplorerExtension : IsolatedIExplorerExtension
 		{
 			IApplication vaultApplication = eventArgs.Context.Application;
 
-			string title = $"Vault Version {GetVaultDisplayVersion(vaultApplication)}";
+			string title = $"{vaultApplication.Title}.{vaultApplication.Version.Minor}";
 			string assemblyVersionInfo = GetAssemblyVersionInfo(nameof(Serilog), typeof(Serilog.Log));
 			MessageBox.Show(assemblyVersionInfo, title);
 		}
@@ -63,13 +63,6 @@ public class VaultExplorerExtension : IsolatedIExplorerExtension
 		{
 			MessageBox.Show(ex.ToString());
 		}
-	}
-
-	private static string GetVaultDisplayVersion(IApplication vaultApplication)
-	{
-		Version version = vaultApplication.Version;
-
-		return $"{version.Build} {version.Major}.{version.Minor}";
 	}
 
 	private static string GetAssemblyVersionInfo(string targetAssemblyName, Type targetAssemblyType)
