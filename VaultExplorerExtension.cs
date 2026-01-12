@@ -5,9 +5,6 @@ using IsolatedVaultAddin.Isolation;
 using System.Runtime.Loader;
 #endif
 
-// ApiVersion assembly-level attribute must match the targeted Vault version.
-//TODO: Add dynamic parameter for ApiVersion.
-[assembly: ApiVersion("19.0")]
 [assembly: ExtensionId("5b01004f-b05b-4ef9-af7e-b9efd8bc16d1")]
 
 namespace IsolatedVaultAddin;

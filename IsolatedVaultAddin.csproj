@@ -7,6 +7,7 @@
 				<VaultVersion>2023</VaultVersion>
 				<TargetFramework>net48</TargetFramework>
 				<LicensingFileName>AdskLicensingSDK_6.dll</LicensingFileName>
+				<ApiVersionNumber>16.0</ApiVersionNumber>
 			</PropertyGroup>
 		</When>
 		<When Condition="$(Configuration.Contains('2024'))">
@@ -14,6 +15,7 @@
 				<VaultVersion>2024</VaultVersion>
 				<TargetFramework>net48</TargetFramework>
 				<LicensingFileName>AdskLicensingSDK_7.dll</LicensingFileName>
+				<ApiVersionNumber>17.0</ApiVersionNumber>
 			</PropertyGroup>
 		</When>
 		<When Condition="$(Configuration.Contains('2025'))">
@@ -21,6 +23,7 @@
 				<VaultVersion>2025</VaultVersion>
 				<TargetFramework>net48</TargetFramework>
 				<LicensingFileName>AdskLicensingSDK_8.dll</LicensingFileName>
+				<ApiVersionNumber>18.0</ApiVersionNumber>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -28,10 +31,11 @@
 				<VaultVersion>2026</VaultVersion>
 				<TargetFramework>net8.0-windows</TargetFramework>
 				<LicensingFileName>AdskLicensingSDK_9.dll</LicensingFileName>
+				<ApiVersionNumber>19.0</ApiVersionNumber>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
-	
+
 	<PropertyGroup>
 		<LangVersion>latestMajor</LangVersion>
 		<!-- Need a "StartAction" & "StartProgram" to debug a "Library" "OutputType" -->
@@ -62,6 +66,13 @@
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<Configurations>Debug;Release;Debug-2023;Debug-2024;Debug-2025;Debug-2026;Release-2023;Release-2024;Release-2025;Release-2026</Configurations>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- ApiVersion Assembly Attribute -->
+		<AssemblyAttribute Include="Autodesk.Connectivity.Extensibility.Framework.ApiVersion">
+			<_Parameter1>$(ApiVersionNumber)</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
 
 	<!-- Nuget Packages -->
 	<ItemGroup>
