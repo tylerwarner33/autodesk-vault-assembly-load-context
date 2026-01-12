@@ -4,7 +4,11 @@
 [![.NET Versions](https://img.shields.io/badge/.NET-4.8--8.0-blue.svg)](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-A minimal Autodesk Vault add-in sample that demonstrates safe dependency isolation. Vault ships with specific assembly versions. Referencing newer (or different) versions in an add-in often causes binding conflicts. This sample allows the use of NuGet package/assembly versions that differ from the ones bundled with Vault by isolating the add-in’s dependencies in a custom load context.
+A minimal Autodesk Vault add-in sample that demonstrates safe dependency isolation. Vault ships with specific assembly versions. Referencing newer (or different) versions in an add-in often causes binding conflicts. This sample allows the use of NuGet package/assembly versions that differ from the ones bundled with Vault by isolating the add-inâ€™s dependencies in a custom load context.
+
+<img width="1710" height="266" alt="Screenshot 2026-01-12 054347" src="https://github.com/user-attachments/assets/7842352c-1713-47bc-b42f-b79e0e6c5219" />
+
+<img width="389" height="509" alt="Screenshot 2026-01-12 054651" src="https://github.com/user-attachments/assets/13800a27-2a99-47f5-8443-856b14248be6" />
 
 ## Setup
 
@@ -27,7 +31,7 @@ git clone https://github.com/tylerwarner33/autodesk-inventor-assembly-load-conte
   - Inherits `Isolation/IsolatedApplicationAddInServer.cs` which implements `Vault.ApplicationAddInServer`.
 - .NET 8 / Vault 2026+:
   - `Isolation/AddinLoadContext.cs` defines a dedicated `AssemblyLoadContext` and uses `AssemblyDependencyResolver` so the add-in resolves managed and native dependencies from its own output folder first.
-- .NET Framework 4.8 / Vault 2023–2025:
+- .NET Framework 4.8 / Vault 2023â€“2025:
   - The add-in runs in the default `AppDomain`. The sample still reports assembly identity to compare behavior across targets.
 - The Vault assemblies (`Autodesk.Vault.Interop`) are referenced with `<Private>False</Private>` so they always loaded from Vault, while the NuGet dependencies (ex. `Serilog`) are copied beside the add-in and loaded in isolation.
 - The `Serilog Version` button (`SerilogPackageVersionButton`) shows the loaded Serilog version and the load context/app domain to verify isolation.
