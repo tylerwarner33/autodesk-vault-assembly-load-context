@@ -15,7 +15,7 @@ A minimal Autodesk Vault add-in sample that demonstrates safe dependency isolati
 
 1. Clone this project or download it. It's recommended to install [GitHub Desktop](https://desktop.github.com/). To clone it via command line, use the following:
 ```
-git clone https://github.com/tylerwarner33/autodesk-inventor-assembly-load-context.git
+git clone https://github.com/tylerwarner33/autodesk-vault-assembly-load-context.git
 ```
 2. Choose a configuration: `Debug-2026`, `Debug-2025`, `Debug-2024`, `Debug-2023` (or the corresponding `Release-*`) to work with that Vault version.
 3. Build the solution. The post-build step creates a bundle and copies it to (replace `<version>` and paste in file explorer):
