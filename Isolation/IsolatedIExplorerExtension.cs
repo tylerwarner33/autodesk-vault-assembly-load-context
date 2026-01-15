@@ -254,6 +254,7 @@ public abstract class IsolatedIExplorerExtension : IExplorerExtension
 	}
 
 
+#if VAULT_HAS_DOCK_PANELS
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public IEnumerable<DockPanel>? DockPanels()
 	{
@@ -283,6 +284,7 @@ public abstract class IsolatedIExplorerExtension : IExplorerExtension
 		}
 #endif
 	}
+#endif
 
 
 	[EditorBrowsable(EditorBrowsableState.Never)]
@@ -352,10 +354,12 @@ public abstract class IsolatedIExplorerExtension : IExplorerExtension
 	/// </summary>
 	public abstract IEnumerable<DetailPaneTab>? OnDetailTabs();
 
+#if VAULT_HAS_DOCK_PANELS
 	/// <summary>
 	///	Overload this method to execute custom logic when the Vault addin ... and <see cref="IExplorerExtension.DockPanels" /> method is executed.
 	/// </summary>
 	public abstract IEnumerable<DockPanel>? OnDockPanels();
+#endif	
 
 	/// <summary>
 	///	Overload this method to execute custom logic when the Vault addin ... and <see cref="IExplorerExtension.HiddenCommands" /> method is executed.

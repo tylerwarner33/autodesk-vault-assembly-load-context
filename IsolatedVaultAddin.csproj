@@ -35,7 +35,11 @@
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
-
+	
+	<PropertyGroup Condition="$(VaultVersion) >= 2026">
+		<DefineConstants>$(DefineConstants);VAULT_HAS_DOCK_PANELS</DefineConstants>
+	</PropertyGroup>
+	
 	<PropertyGroup>
 		<LangVersion>latestMajor</LangVersion>
 		<!-- Need a "StartAction" & "StartProgram" to debug a "Library" "OutputType" -->

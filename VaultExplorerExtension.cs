@@ -29,7 +29,7 @@ public class VaultExplorerExtension : IsolatedIExplorerExtension
 		CommandSite toolbarCommandSite = new("SerilogPackageVersionCommand.Toolbar", "Serilog Version Command Site")
 		{
 			Location = CommandSiteLocation.AdvancedToolbar,
-			DeployAsPulldownMenu = false,			
+			DeployAsPulldownMenu = false,
 		};
 
 		toolbarCommandSite.AddCommand(SerilogPackageVersionCommandItem);
@@ -43,7 +43,9 @@ public class VaultExplorerExtension : IsolatedIExplorerExtension
 
 	public override IEnumerable<DetailPaneTab>? OnDetailTabs() => null;
 
+#if VAULT_HAS_DOCK_PANELS
 	public override IEnumerable<DockPanel>? OnDockPanels() => null;
+#endif
 
 	public override IEnumerable<string>? OnHiddenCommands() => null;
 

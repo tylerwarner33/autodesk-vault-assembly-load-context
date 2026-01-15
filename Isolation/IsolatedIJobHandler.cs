@@ -60,7 +60,7 @@ public abstract class IsolatedIJobHandler : IJobHandler
 		try
 		{
 			ResolveHelper.BeginAssemblyResolve(currentType);
-			OnExecute();
+			return OnExecute();
 		}
 		finally
 		{
