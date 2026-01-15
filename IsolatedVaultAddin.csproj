@@ -24,6 +24,7 @@
 				<TargetFramework>net48</TargetFramework>
 				<LicensingFileName>AdskLicensingSDK_8.dll</LicensingFileName>
 				<ApiVersionNumber>18.0</ApiVersionNumber>
+				<NoWarn>$(NoWarn);MSB3277</NoWarn>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
