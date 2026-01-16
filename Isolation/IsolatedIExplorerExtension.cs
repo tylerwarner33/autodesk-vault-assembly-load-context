@@ -1,8 +1,6 @@
 ﻿using Autodesk.Connectivity.Explorer.Extensibility;
 using System.ComponentModel;
 
-//TODO: Handle `DockPanels()` method only being available in Vault 2026+.
-
 namespace IsolatedVaultAddin.Isolation;
 
 /// <summary>
