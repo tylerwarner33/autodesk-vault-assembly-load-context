@@ -7,7 +7,7 @@ namespace IsolatedVaultAddin.Isolation;
 /// <summary>
 ///	<see cref="IJobHandler" /> is the entry point of the Vault job processor addin.
 ///	This class is extended to have fully isolated addin dependency container.
-///	Inherit this class and add custom logic to overrides of <see cref="Load" />.
+///	Inherit this class and add custom logic to overrides of <see cref="OnExecute" />, <see cref="OnCanProcess" />, <see cref="JobProcessorStartup" />, <see cref="JobProcessorShutdown" />, <see cref="JobProcessorWake" />, or <see cref="JobProcessorSleep" />.
 /// </summary>
 /// <remarks>
 ///	Must set 'Private' to 'False' on 'Autodesk.Connectivity.Explorer.Extensibility', 'Autodesk.Connectivity.Explorer.ExtensibilityTools', 'Autodesk.Connectivity.Extensibility.Framework', 'Autodesk.Connectivity.JobProcessor.Extensibility', 'Autodesk.Connectivity.WebServices', 'Autodesk.DataManagement.Client.Framework', 'Autodesk.DataManagement.Client.Framework.Vault'  project file references.
