@@ -44,7 +44,7 @@ git clone https://github.com/tylerwarner33/autodesk-vault-assembly-load-context.
 
 ## Resources
 
-- TylerWarner.dev Blog Post: [Isolate Vault Add-In](https://tylerwarner.dev/how-to-use-assemblyloadcontext-for-isolating-inventor-addin-dependencies)
+- TylerWarner.dev Blog Post: [Isolate Vault Add-In](https://tylerwarner.dev/assemblyloadcontext-for-vault-addins)
 - Microsoft Learn: [System.Runtime.Loader.AssemblyLoadContext](https://learn.microsoft.com/en-us/dotnet/core/dependency-loading/understanding-assemblyloadcontext)
 - Microsoft GitHub: [AssemblyLoadContext](https://github.com/dotnet/coreclr/blob/v2.1.0/Documentation/design-docs/assemblyloadcontext.md)
 
